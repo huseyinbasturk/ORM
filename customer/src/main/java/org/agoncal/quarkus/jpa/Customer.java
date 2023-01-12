@@ -3,6 +3,7 @@ package org.agoncal.quarkus.jpa;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.Instant;
 
 /**
  * Example JPA entity.
@@ -24,11 +25,24 @@ import javax.persistence.Id;
  */
 @Entity
 public class Customer {
-    private Long id;
-    private String field;
-
     @Id
     @GeneratedValue
+    private Long id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Instant createdDate = Instant.now();
+
+
+    public Customer() {
+    }
+
+    public Customer(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }
@@ -37,11 +51,35 @@ public class Customer {
         this.id = id;
     }
 
-    public String getField() {
-        return field;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setField(String field) {
-        this.field = field;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
     }
 }
