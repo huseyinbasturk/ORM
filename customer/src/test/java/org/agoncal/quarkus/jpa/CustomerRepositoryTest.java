@@ -15,15 +15,16 @@ public class CustomerRepositoryTest {
     @Inject
     CustomerRepository repository;
 
+
     @Test
     @TestTransaction
-    public void shouldCreateAndFindAnCustomer() throws SQLException{
-        Customer customer = new Customer("firstName","lastName", "email");
+    public void shouldCreateAndFindACustomer() {
+        Customer customer = new Customer("first name", "last name", "email");
 
         repository.persist(customer);
         assertNotNull(customer.getId());
 
         customer = repository.findById(customer.getId());
-        assertEquals("firstName",customer.getFirstName());
+        assertEquals("last name", customer.getLastName());
     }
 }
